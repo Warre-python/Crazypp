@@ -1,6 +1,7 @@
 #pragma once
 #include "Window.hpp"
 #include "Shader.hpp"
+#include "rendering/Renderer.hpp"
 
 class Game {
 public:
@@ -11,7 +12,8 @@ public:
 
 private:
     Window m_window;
-    Shader m_shader;
+    Renderer m_renderer;
+
     void processInput();
     void update();
     void render();

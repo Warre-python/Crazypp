@@ -2,10 +2,11 @@
 #include <iostream>
 #include "Window.hpp"
 #include "Shader.hpp"
+#include "rendering/Renderer.hpp"
 
 Game::Game()
-    : m_window(800, 600, "OpenGL Game"),
-      m_shader("res/shaders/basic.glsl"),
+    : m_window(800, 600, "Crazy++"),
+      m_renderer(),
       m_running(true) {
 }
 
@@ -14,8 +15,6 @@ Game::~Game() {
 }
 
 void Game::run() {
-    m_shader.compile();
-    m_shader.use();
     while (m_running && !m_window.shouldClose()) {
         processInput();
         update();
@@ -33,6 +32,7 @@ void Game::update() {
 }
 
 void Game::render() {
+    m_renderer.render();
     m_window.swapBuffers();
     m_window.pollEvents();
 
