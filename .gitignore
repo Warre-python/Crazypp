@@ -1,0 +1,60 @@
+# Build directories and generated files
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+out/
+bin/
+obj/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vcxproj.user
+ipch/
+
+# Compiled binaries and libraries
+*.dll
+*.exe
+*.app
+*.out
+*.so
+*.dylib
+*.a
+*.lib
+*.obj
+*.o
+*.pdb
+*.ilk
+*.exp
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+*.cache
+
+# IDE and editor files
+.vscode/
+.idea/
+*.code-workspace
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+
+/external/
