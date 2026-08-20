@@ -30,6 +30,7 @@ add_executable(${PROJECT_NAME}
     src/core/Node.cpp
     src/core/Transform.cpp
     src/rendering/Renderer.cpp
+    src/core/Sprite.cpp
 )
 
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
