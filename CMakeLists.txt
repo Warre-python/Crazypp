@@ -23,14 +23,17 @@ add_subdirectory(external/glm)
 add_executable(${PROJECT_NAME} 
     src/main.cpp 
     src/glad.c
+    src/Input.cpp
     src/Window.cpp
     src/Shader.cpp
     src/Game.cpp
+    src/objects/Ball.cpp
     src/objects/Player.cpp
     src/core/Node.cpp
     src/core/Transform.cpp
     src/rendering/Renderer.cpp
     src/core/Sprite.cpp
+    src/physics/CircleCollider.cpp
 )
 
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD

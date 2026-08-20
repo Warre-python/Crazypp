@@ -2,20 +2,23 @@
 #version 330 core
 layout (location = 0) in vec3 aPos;
 
+uniform mat4 model;
+uniform mat4 projection;
+uniform vec4 uColor;
+
 void main()
 {
-    gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+    gl_Position = projection * model * vec4(aPos, 1.0);
 }
 
 #type fragment
 #version 330 core
 
-in vec4 vertexColor;
-
 out vec4 FragColor;
+uniform vec4 uColor;
 
 
 void main()
 {
-    FragColor = vertexColor;
+    FragColor = uColor;
 } 

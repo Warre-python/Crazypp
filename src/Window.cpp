@@ -1,5 +1,6 @@
 #include "Window.hpp"
 #include <iostream>
+#include "Input.hpp"
 
 Window::Window(int width, int height, const std::string& title) 
     : m_width(width), m_height(height), m_title(title), m_window(nullptr) {
@@ -28,6 +29,7 @@ Window::Window(int width, int height, const std::string& title)
         std::cerr << "Failed to initialize GLAD" << std::endl;
     }
 
+    m_lastFrameTime = glfwGetTime();
 }
 
 Window::~Window() {
@@ -56,7 +58,14 @@ void Window::framebuffer_size_callback(GLFWwindow* window, int width, int height
 }
 
 void Window::processInput() {
-    if (glfwGetKey(m_window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+    if (Input::isKeyPressed(GLFW_KEY_ESCAPE)) {
         glfwSetWindowShouldClose(m_window, true);
     }
+}
+
+float Window::getDeltaTime() {
+    const double currentTime = glfwGetTime();
+    const float deltaTime = static_cast<float>(currentTime - m_lastFrameTime);
+    m_lastFrameTime = currentTime;
+    return deltaTime;
 }

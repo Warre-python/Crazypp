@@ -13,6 +13,8 @@ public:
     virtual void draw(Renderer& renderer) {}
 
     void addChild(std::unique_ptr<Node> child);
+    void move(float deltaX, float deltaY);
+    glm::mat4 getWorldMatrix() const;
 
 protected:
     Node* m_parent = nullptr;

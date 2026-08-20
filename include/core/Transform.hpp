@@ -1,4 +1,5 @@
 #pragma once
+#include <glm/glm.hpp>
 
 class Transform2D {
 public:
@@ -14,6 +15,9 @@ public:
     float getRotation() const { return m_rotation; }
     float getScaleX() const { return m_scale[0]; }
     float getScaleY() const { return m_scale[1]; }
+
+    glm::mat4 getMatrix() const;
+
     
 private:
     float m_position[2];

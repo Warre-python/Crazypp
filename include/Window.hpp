@@ -14,11 +14,15 @@ public:
     void processInput();
     void clear(float r, float g, float b, float a) const;
 
+    float getDeltaTime();
+
 private:
     GLFWwindow* m_window;
     int m_width;
     int m_height;
     std::string m_title;
+
+    double m_lastFrameTime = 0.0;
 
     static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
     
