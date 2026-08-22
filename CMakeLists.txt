@@ -27,8 +27,9 @@ add_executable(${PROJECT_NAME}
     src/Window.cpp
     src/Shader.cpp
     src/Game.cpp
-    src/objects/Ball.cpp
-    src/objects/Player.cpp
+    src/scenes/Ball.cpp
+    src/scenes/Player.cpp
+    src/scenes/MainScene.cpp
     src/core/Node.cpp
     src/core/Transform.cpp
     src/rendering/Renderer.cpp

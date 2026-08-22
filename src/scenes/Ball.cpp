@@ -1,4 +1,4 @@
-#include "objects/Ball.hpp"
+#include "scenes/Ball.hpp"
 #include "core/Sprite.hpp"
 #include "physics/CircleCollider.hpp"
 #include <glad/glad.h>

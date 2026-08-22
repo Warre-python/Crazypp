@@ -1,4 +1,4 @@
-#include "objects/Player.hpp"
+#include "scenes/Player.hpp"
 #include "rendering/Renderer.hpp"
 #include "core/Sprite.hpp"
 #include "physics/CircleCollider.hpp"
