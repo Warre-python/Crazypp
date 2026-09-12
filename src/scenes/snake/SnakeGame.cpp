@@ -17,9 +17,11 @@ void SnakeGame::update(float deltaTime) {
 }
 
 void SnakeGame::draw(Renderer& renderer) {
-    // Drawing logic for the SnakeGame
+    for (const auto& child : m_children) {
+        child->draw(renderer);
+    }
 }
 
 void SnakeGame::processInput() {
-    // Input processing logic for the SnakeGame
+    
 }

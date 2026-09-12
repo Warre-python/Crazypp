@@ -16,6 +16,7 @@ public:
 private:
     glm::vec2 m_direction = glm::vec2(1, 0); // Initial direction to the right
     std::vector<glm::vec2> m_bodySegments; 
-
+    float timer = 0.0f;
+    int m_segmentSize = 20; // Size of each segment in pixels
     void processInput();
 };

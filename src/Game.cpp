@@ -5,6 +5,7 @@
 #include "rendering/Renderer.hpp"
 #include "core/Node.hpp"
 #include "scenes/snake/SnakeGame.hpp"
+#include "scenes/ball/BallGame.hpp"
 
 Game::Game()
     : m_window(800, 600, "Crazy++"),
