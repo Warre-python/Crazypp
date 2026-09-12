@@ -1,13 +1,14 @@
 #pragma once
-#include "core/Node.hpp"
+#include "../../core/Node.hpp"
 
-class MainScene : public Node {
+class SnakeGame : public Node {
 public:
-    MainScene();
-    ~MainScene();
+    SnakeGame();
+    ~SnakeGame();
 
     void update(float deltaTime) override;
     void draw(Renderer& renderer) override;
+
 private:
     void processInput();
 };

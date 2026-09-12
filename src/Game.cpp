@@ -3,17 +3,15 @@
 #include "Window.hpp"
 #include "Shader.hpp"
 #include "rendering/Renderer.hpp"
-#include "scenes/Ball.hpp"
-#include "scenes/Player.hpp"
 #include "core/Node.hpp"
-#include "scenes/MainScene.hpp"
+#include "scenes/snake/SnakeGame.hpp"
 
 Game::Game()
     : m_window(800, 600, "Crazy++"),
       m_renderer(),
       m_running(true) {
 
-    addNode(std::make_unique<MainScene>());
+    addNode(std::make_unique<SnakeGame>());
 }
 
 Game::~Game() {

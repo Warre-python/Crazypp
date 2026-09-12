@@ -27,14 +27,20 @@ add_executable(${PROJECT_NAME}
     src/Window.cpp
     src/Shader.cpp
     src/Game.cpp
-    src/scenes/Ball.cpp
-    src/scenes/Player.cpp
-    src/scenes/MainScene.cpp
+
+    src/scenes/ball/Ball.cpp
+    src/scenes/ball/BallGame.cpp
+    src/scenes/snake/Snake.cpp
+    src/scenes/snake/SnakeGame.cpp
+
     src/core/Node.cpp
     src/core/Transform.cpp
-    src/rendering/Renderer.cpp
     src/core/Sprite.cpp
+    
+    src/rendering/Renderer.cpp
+    
     src/physics/CircleCollider.cpp
+
 )
 
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
