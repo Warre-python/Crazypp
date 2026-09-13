@@ -39,7 +39,7 @@ void Game::update(float deltaTime) {
 }
 
 void Game::render() {
-    m_window.clear(1.0f, 0.1f, 0.1f, 1.0f);
+    m_window.clear(0.1f, 0.1f, 0.1f, 1.0f);
 
 
 

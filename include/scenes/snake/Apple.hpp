@@ -1,18 +1,15 @@
 #pragma once
 #include "../../core/Node.hpp"
+#include <vector>
 
-class SnakeGame : public Node {
+
+class Apple : public Node {
 public:
-    SnakeGame();
-    ~SnakeGame();
+    Apple();
+    ~Apple();
 
     void update(float deltaTime) override;
     void draw(Renderer& renderer) override;
 
-    static inline float size = 20.0f; 
-
-
 private:
-    void processInput();
 };
-

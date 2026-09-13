@@ -13,6 +13,18 @@ public:
     virtual void draw(Renderer& renderer) {}
 
     void addChild(std::unique_ptr<Node> child);
+    template <typename T>
+    T* getChild() {
+        for (const auto& child : m_children) {
+            if (auto castedChild = dynamic_cast<T*>(child.get())) {
+                return castedChild;
+            }
+        }
+        return nullptr;
+    }
+    void getChildren(std::vector<Node*>& children) const;
+    void setPosition(float x, float y);
+    glm::vec2 getPosition() const;
     void move(float deltaX, float deltaY);
     glm::mat4 getWorldMatrix() const;
 

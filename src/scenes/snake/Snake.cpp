@@ -3,11 +3,15 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <Input.hpp>
 #include <GLFW/glfw3.h>
+#include "scenes/snake/SnakeGame.hpp"
+#include "scenes/snake/Apple.hpp"
 
 Snake::Snake() {
-    m_bodySegments.push_back(glm::vec2(100, 100)); 
-    m_bodySegments.push_back(glm::vec2(120, 100));
-    m_bodySegments.push_back(glm::vec2(140, 100)); 
+    int initialSegments = 5; // Number of initial segments
+    
+    for (int i = 0; i < initialSegments-1; ++i) {
+        m_bodySegments.push_back(m_bodySegments.back() - m_direction * SnakeGame::size);
+    }
 
     
 
@@ -19,17 +23,36 @@ Snake::~Snake() {
 
 void Snake::update(float deltaTime) {
     timer += deltaTime;
-    if (timer >= 0.5f) {
-        m_bodySegments.insert(m_bodySegments.begin(), m_bodySegments.front() + m_direction * static_cast<float>(m_segmentSize));
+    if (timer >= 0.2f) {
+        m_bodySegments.insert(m_bodySegments.begin(), m_bodySegments.front() + m_direction * SnakeGame::size);
         m_bodySegments.pop_back();
         timer = 0.0f; // Reset the timer after moving the snake
     }
-    
+
+    if (m_bodySegments.size() > 1) {
+        for (size_t i = 1; i < m_bodySegments.size(); ++i) {
+            if (m_bodySegments[0] == m_bodySegments[i]) {
+                // Handle collision with itself (e.g., reset the game or end it)
+                m_bodySegments.resize(3); // Reset to just the head
+                break;
+            }
+        }
+    }
+
+    if (m_parent) {
+        if (auto apple = m_parent->getChild<Apple>()) {
+            if (m_bodySegments[0] == apple->getPosition()) {
+            m_bodySegments.push_back(m_bodySegments.back()); // Add a new segment at the tail
+                apple->setPosition((rand() % 20) * SnakeGame::size, (rand() % 20) * SnakeGame::size); // Move the apple to a new random position
+            }
+        }
+    }
+
     processInput();
 }
 
 void Snake::draw(Renderer& renderer) {
-    const float halfSize = m_segmentSize * 0.5f;
+    const float halfSize = SnakeGame::size * 0.5f;
     std::vector<float> vertices;
     std::vector<unsigned int> indices;
     vertices.reserve(m_bodySegments.size() * 12);
@@ -63,12 +86,24 @@ void Snake::draw(Renderer& renderer) {
 
 void Snake::processInput() {
     if (Input::isKeyPressed(GLFW_KEY_UP)) {
-        m_direction = glm::vec2(0, -1); // Move the snake up
+        if (m_direction != glm::vec2(0, 1)){
+            // Prevent reversing direction
+            m_direction = glm::vec2(0, -1); // Move the snake up
+        } 
     } else if (Input::isKeyPressed(GLFW_KEY_DOWN)) {
-        m_direction = glm::vec2(0, 1); // Move the snake down
+        if (m_direction != glm::vec2(0, -1)){
+            // Prevent reversing direction
+            m_direction = glm::vec2(0, 1); // Move the snake down
+        }
     } else if (Input::isKeyPressed(GLFW_KEY_LEFT)) {
-        m_direction = glm::vec2(-1, 0); // Move the snake left
+        if (m_direction != glm::vec2(1, 0)){
+            // Prevent reversing direction
+            m_direction = glm::vec2(-1, 0); // Move the snake left
+        }  
     } else if (Input::isKeyPressed(GLFW_KEY_RIGHT)) {
-        m_direction = glm::vec2(1, 0); // Move the snake right
+        if (m_direction != glm::vec2(-1, 0)){
+            // Prevent reversing direction
+            m_direction = glm::vec2(1, 0); // Move the snake right
+        }
     }
 }

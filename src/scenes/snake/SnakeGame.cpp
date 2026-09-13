@@ -1,8 +1,10 @@
 #include "scenes/snake/SnakeGame.hpp"
 #include "scenes/snake/Snake.hpp"
+#include "scenes/snake/Apple.hpp"
 
 SnakeGame::SnakeGame() {
     addChild(std::make_unique<Snake>()); 
+    addChild(std::make_unique<Apple>());
 }
 
 SnakeGame::~SnakeGame() {

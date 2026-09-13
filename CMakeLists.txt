@@ -30,6 +30,8 @@ add_executable(${PROJECT_NAME}
 
     src/scenes/ball/Ball.cpp
     src/scenes/ball/BallGame.cpp
+    
+    src/scenes/snake/Apple.cpp
     src/scenes/snake/Snake.cpp
     src/scenes/snake/SnakeGame.cpp
 
