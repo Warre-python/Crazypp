@@ -104,10 +104,8 @@ void Shader::compile() {
 }
 
 void Shader::use() const {
-    if (!beingUsed) {
-        glUseProgram(shaderProgramID);
-        const_cast<Shader*>(this)->beingUsed = true;
-    }
+    glUseProgram(shaderProgramID);
+    const_cast<Shader*>(this)->beingUsed = true;
 }
 
 void Shader::detach() const {

@@ -19,6 +19,25 @@ find_package(OpenGL REQUIRED)
 # Zoek naar GLM (OpenGL Mathematics library)
 add_subdirectory(external/glm)
 
+include(FetchContent)
+
+FetchContent_Declare(
+    freetype
+    URL https://github.com/freetype/freetype/archive/refs/tags/VER-2-13-3.tar.gz
+    DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+)
+
+set(FT_DISABLE_ZLIB ON CACHE BOOL "" FORCE)
+set(FT_DISABLE_BZIP2 ON CACHE BOOL "" FORCE)
+set(FT_DISABLE_PNG ON CACHE BOOL "" FORCE)
+set(FT_DISABLE_HARFBUZZ ON CACHE BOOL "" FORCE)
+set(FT_DISABLE_BROTLI ON CACHE BOOL "" FORCE)
+
+FetchContent_MakeAvailable(freetype)
+
+
+
+
 # Definieer je uitvoerbare bestand (executable) inclusief de GLAD broncode
 add_executable(${PROJECT_NAME} 
     src/main.cpp 
@@ -27,6 +46,9 @@ add_executable(${PROJECT_NAME}
     src/Window.cpp
     src/Shader.cpp
     src/Game.cpp
+
+
+    src/scenes/GameManager.cpp
 
     src/scenes/ball/Ball.cpp
     src/scenes/ball/BallGame.cpp
@@ -38,6 +60,7 @@ add_executable(${PROJECT_NAME}
     src/core/Node.cpp
     src/core/Transform.cpp
     src/core/Sprite.cpp
+    src/core/Text.cpp
     
     src/rendering/Renderer.cpp
     
@@ -62,4 +85,5 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     glfw
     OpenGL::GL
     glm::glm
+    freetype
 )

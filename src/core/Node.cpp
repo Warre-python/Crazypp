@@ -36,7 +36,6 @@ glm::mat4 Node::getWorldMatrix() const {
 	return m_transform.getMatrix();
 }
 
-void Node::resetNode() const {
 	
 
 

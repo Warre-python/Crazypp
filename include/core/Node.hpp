@@ -22,6 +22,11 @@ public:
         }
         return nullptr;
     }
+
+    Node *getParent() const {
+        return m_parent;
+    }
+    
     void getChildren(std::vector<Node*>& children) const;
     void setPosition(float x, float y);
     glm::vec2 getPosition() const;

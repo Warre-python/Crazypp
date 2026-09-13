@@ -4,7 +4,7 @@
 #include "Shader.hpp"
 #include "rendering/Renderer.hpp"
 #include "core/Node.hpp"
-#include "scenes/snake/SnakeGame.hpp"
+#include "scenes/GameManager.hpp"
 #include "scenes/ball/BallGame.hpp"
 
 Game::Game()
@@ -12,7 +12,7 @@ Game::Game()
       m_renderer(),
       m_running(true) {
 
-    addNode(std::make_unique<SnakeGame>());
+    addNode(std::make_unique<GameManager>());
 }
 
 Game::~Game() {

@@ -11,8 +11,11 @@ public:
 
     static inline float size = 20.0f; 
 
+    void increaseScore(int amount);
+
 
 private:
+    int m_score = 0;
     void processInput();
 };
 

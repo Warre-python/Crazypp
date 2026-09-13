@@ -5,6 +5,7 @@
 #include <GLFW/glfw3.h>
 #include "scenes/snake/SnakeGame.hpp"
 #include "scenes/snake/Apple.hpp"
+#include "scenes/GameManager.hpp"
 
 Snake::Snake() {
     int initialSegments = 5; // Number of initial segments
@@ -32,9 +33,12 @@ void Snake::update(float deltaTime) {
     if (m_bodySegments.size() > 1) {
         for (size_t i = 1; i < m_bodySegments.size(); ++i) {
             if (m_bodySegments[0] == m_bodySegments[i]) {
-                // Handle collision with itself (e.g., reset the game or end it)
-                m_bodySegments.resize(3); // Reset to just the head
-                break;
+                if (auto* parent = getParent()) {
+                    if (auto* gameManager = dynamic_cast<GameManager*>(parent->getParent())) {
+                        gameManager->requestReset(); // Reset after the current update finishes
+                    }
+                }
+                break; // Exit the loop after resetting the game
             }
         }
     }
@@ -42,8 +46,11 @@ void Snake::update(float deltaTime) {
     if (m_parent) {
         if (auto apple = m_parent->getChild<Apple>()) {
             if (m_bodySegments[0] == apple->getPosition()) {
-            m_bodySegments.push_back(m_bodySegments.back()); // Add a new segment at the tail
+             m_bodySegments.push_back(m_bodySegments.back()); // Add a new segment at the tail
                 apple->setPosition((rand() % 20) * SnakeGame::size, (rand() % 20) * SnakeGame::size); // Move the apple to a new random position
+                if (auto* game = dynamic_cast<SnakeGame*>(m_parent)) {
+                    game->increaseScore(1); // Increase the score when the snake eats the apple
+                }
             }
         }
     }
