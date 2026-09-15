@@ -2,10 +2,17 @@
 #include "scenes/snake/Snake.hpp"
 #include "scenes/snake/Apple.hpp"
 #include "core/Text.hpp"
+#include "core/Sprite.hpp"
+#include "core/Texture.hpp"
 
 SnakeGame::SnakeGame() {
     addChild(std::make_unique<Snake>()); 
     addChild(std::make_unique<Apple>());
+    auto sprite = std::make_unique<Sprite>();
+    sprite->setTexture(new Texture("res/textures/WarroxCraft.png"));
+    sprite->setPosition(400.0f, 300.0f);
+    addChild(std::move(sprite));
+
 
     auto text = std::make_unique<Text>(
         "",

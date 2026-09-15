@@ -1,4 +1,5 @@
 #include "core/Sprite.hpp"
+#include "core/Texture.hpp"
 #include "rendering/Renderer.hpp"
 #include <cmath>
 
@@ -12,10 +13,17 @@ void Sprite::draw(Renderer& renderer) {
         return;
     }
 
-    renderer.render(
-        m_vertices.data(), static_cast<int>(m_vertices.size()),
-        m_indices.data(), static_cast<int>(m_indices.size()),
-        getWorldMatrix(), m_color);
+    if (m_texture != nullptr) {
+        renderer.renderTexture(
+            m_textureVertices.data(), static_cast<int>(m_textureVertices.size()),
+            m_indices.data(), static_cast<int>(m_indices.size()),
+            getWorldMatrix(), *m_texture);
+    } else {
+        renderer.render(
+            m_vertices.data(), static_cast<int>(m_vertices.size()),
+            m_indices.data(), static_cast<int>(m_indices.size()),
+            getWorldMatrix(), m_color);
+    }
 }
 
 void Sprite::rectangle(float width, float height) {
@@ -28,6 +36,12 @@ void Sprite::rectangle(float width, float height) {
         -halfWidth, -halfHeight, 0.0f,
         -halfWidth, halfHeight, 0.0f
     };
+    m_textureVertices = {
+        halfWidth, halfHeight, 0.0f, 1.0f, 0.0f,
+        halfWidth, -halfHeight, 0.0f, 1.0f, 1.0f,
+        -halfWidth, -halfHeight, 0.0f, 0.0f, 1.0f,
+        -halfWidth, halfHeight, 0.0f, 0.0f, 0.0f
+    };
     m_indices = {0, 1, 3, 1, 2, 3};
 }
 
@@ -36,6 +50,7 @@ void Sprite::circle(float radius) {
     constexpr float pi = 3.14159265358979323846f;
 
     m_vertices.clear();
+    m_textureVertices.clear();
     m_indices.clear();
     m_vertices.reserve((segments + 1) * 3);
     m_indices.reserve(segments * 3);
@@ -60,4 +75,8 @@ void Sprite::setColor(float r, float g, float b, float a) {
     m_color[1] = g;
     m_color[2] = b;
     m_color[3] = a;
+}
+
+void Sprite::setTexture(const Texture* texture) {
+    m_texture = texture;
 }

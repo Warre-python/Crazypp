@@ -42,6 +42,7 @@ FetchContent_MakeAvailable(freetype)
 add_executable(${PROJECT_NAME} 
     src/main.cpp 
     src/glad.c
+    src/stb_image.cpp
     src/Input.cpp
     src/Window.cpp
     src/Shader.cpp
@@ -61,6 +62,7 @@ add_executable(${PROJECT_NAME}
     src/core/Transform.cpp
     src/core/Sprite.cpp
     src/core/Text.cpp
+    src/core/Texture.cpp
     
     src/rendering/Renderer.cpp
     
