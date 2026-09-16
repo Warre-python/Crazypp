@@ -1,5 +1,5 @@
 #pragma once
-#include "../../core/Node.hpp"
+#include "../../nodes/Node.hpp"
 #include <vector>
 
 

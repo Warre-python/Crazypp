@@ -1,5 +1,5 @@
-#include "core/Sprite.hpp"
-#include "core/Texture.hpp"
+#include "nodes/Sprite.hpp"
+#include "nodes/Texture.hpp"
 #include "rendering/Renderer.hpp"
 #include <cmath>
 

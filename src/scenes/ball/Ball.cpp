@@ -1,5 +1,5 @@
 #include "scenes/ball/Ball.hpp"
-#include "core/Sprite.hpp"
+#include "nodes/Sprite.hpp"
 #include "physics/CircleCollider.hpp"
 #include <glad/glad.h>
 #include <glm/geometric.hpp>

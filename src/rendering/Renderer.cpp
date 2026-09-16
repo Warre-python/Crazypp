@@ -1,5 +1,5 @@
 #include "rendering/Renderer.hpp"
-#include "core/Texture.hpp"
+#include "nodes/Texture.hpp"
 #include <glm/gtc/matrix_transform.hpp>
 
 Renderer::Renderer()

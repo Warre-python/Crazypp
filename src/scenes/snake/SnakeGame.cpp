@@ -1,9 +1,9 @@
 #include "scenes/snake/SnakeGame.hpp"
 #include "scenes/snake/Snake.hpp"
 #include "scenes/snake/Apple.hpp"
-#include "core/Text.hpp"
-#include "core/Sprite.hpp"
-#include "core/Texture.hpp"
+#include "nodes/Text.hpp"
+#include "nodes/Sprite.hpp"
+#include "nodes/Texture.hpp"
 
 SnakeGame::SnakeGame() {
     addChild(std::make_unique<Snake>()); 

@@ -3,7 +3,7 @@
 #include "Window.hpp"
 #include "Shader.hpp"
 #include "rendering/Renderer.hpp"
-#include "core/Node.hpp"
+#include "nodes/Node.hpp"
 #include "scenes/GameManager.hpp"
 #include "scenes/ball/BallGame.hpp"
 

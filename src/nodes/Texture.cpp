@@ -1,4 +1,4 @@
-#include "core/Texture.hpp"
+#include "nodes/Texture.hpp"
 #include "stb_image.h"
 #include <iostream>
 

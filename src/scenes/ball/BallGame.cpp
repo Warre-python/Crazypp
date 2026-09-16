@@ -1,5 +1,5 @@
 #include "scenes/ball/BallGame.hpp"
-#include "core/Node.hpp"
+#include "nodes/Node.hpp"
 #include "scenes/ball/Ball.hpp"
 
 BallGame::BallGame() {

@@ -58,11 +58,11 @@ add_executable(${PROJECT_NAME}
     src/scenes/snake/Snake.cpp
     src/scenes/snake/SnakeGame.cpp
 
-    src/core/Node.cpp
-    src/core/Transform.cpp
-    src/core/Sprite.cpp
-    src/core/Text.cpp
-    src/core/Texture.cpp
+    src/nodes/Node.cpp
+    src/nodes/Transform.cpp
+    src/nodes/Sprite.cpp
+    src/nodes/Text.cpp
+    src/nodes/Texture.cpp
     
     src/rendering/Renderer.cpp
     

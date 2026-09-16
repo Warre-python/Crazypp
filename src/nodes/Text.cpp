@@ -1,4 +1,4 @@
-#include "core/Text.hpp"
+#include "nodes/Text.hpp"
 #include <ft2build.h>
 #include FT_FREETYPE_H
 #include <glm/gtc/matrix_transform.hpp>

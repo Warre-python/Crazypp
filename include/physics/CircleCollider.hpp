@@ -1,5 +1,5 @@
 #pragma once
-#include "core/Node.hpp"
+#include "nodes/Node.hpp"
 #include <glm/vec2.hpp>
 
 class CircleCollider : public Node {

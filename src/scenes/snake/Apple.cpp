@@ -1,5 +1,5 @@
 #include "scenes/snake/Apple.hpp"
-#include "core/Sprite.hpp"
+#include "nodes/Sprite.hpp"
 
 Apple::Apple() {
     m_transform.setPosition(200.0f, 200.0f);

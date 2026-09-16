@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../core/Node.hpp"
+#include "../../nodes/Node.hpp"
 #include <vector>
 #include <glm/vec2.hpp>
 

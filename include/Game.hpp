@@ -2,7 +2,7 @@
 #include "Window.hpp"
 #include "Shader.hpp"
 #include "rendering/Renderer.hpp"
-#include "core/Node.hpp"
+#include "nodes/Node.hpp"
 
 class Game {
 public:

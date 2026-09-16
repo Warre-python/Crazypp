@@ -1,4 +1,4 @@
-#include "core/Node.hpp"
+#include "nodes/Node.hpp"
 
 void Node::addChild(std::unique_ptr<Node> child) {
 	if (!child) {

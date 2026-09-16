@@ -1,5 +1,5 @@
 #pragma once
-#include "core/Node.hpp"
+#include "Node.hpp"
 
 class Texture : public Node {
 public:
